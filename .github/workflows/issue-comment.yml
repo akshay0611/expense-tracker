@@ -1,0 +1,17 @@
+name: New Issue Auto-Comment
+
+on: issues.opened
+
+jobs:
+  add-comment:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Add welcome comment
+        uses: peter-evans/create-or-update-comment@v3
+        with:
+          issue-number: ${{ github.event.issue.number }}
+          body: |
+            👋 Hello and thank you for contributing to Expense Tracker! We appreciate you taking the time to open this issue. Please make sure you have read our [**README.md**](https://github.com/akshay0611/expense-tracker/blob/main/README.md) and [**CONTRIBUTING.md**](https://github.com/akshay0611/expense-tracker/blob/main/CONTRIBUTING.md) guides.   **Important:** Please do not open a Pull Request until this issue has been assigned to you.
+
+            Our maintainers will review your issue shortly. Happy coding! 🚀
+          token: ${{ secrets.GITHUB_TOKEN }}
